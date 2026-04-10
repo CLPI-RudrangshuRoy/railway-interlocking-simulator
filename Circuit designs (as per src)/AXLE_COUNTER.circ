@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="4.1.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v4.1.0(https://github.com/logisim-evolution/).
+
+  <lib desc="#Wiring" name="0">
+    <tool name="Pin">
+      <a name="appearance" val="classic"/>
+    </tool>
+  </lib>
+  <lib desc="#Gates" name="1">
+    <tool name="NOT Gate">
+      <a name="facing" val="north"/>
+    </tool>
+  </lib>
+  <lib desc="#Arithmetic" name="2"/>
+  <lib desc="#Memory" name="3"/>
+  <lib desc="#I/O" name="4">
+    <tool name="LED">
+      <a name="facing" val="north"/>
+    </tool>
+  </lib>
+  <lib desc="#Base" name="5"/>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="5" map="Button2" name="Poke Tool"/>
+    <tool lib="5" map="Button3" name="Menu Tool"/>
+    <tool lib="5" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="5" name="Poke Tool"/>
+    <tool lib="5" name="Edit Tool"/>
+    <tool lib="5" name="Wiring Tool"/>
+    <tool lib="5" name="Text Tool"/>
+    <sep/>
+    <tool lib="0" name="Pin"/>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="type" val="output"/>
+    </tool>
+    <sep/>
+    <tool lib="1" name="NOT Gate">
+      <a name="facing" val="north"/>
+    </tool>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+    <tool lib="1" name="XOR Gate"/>
+    <tool lib="1" name="NAND Gate"/>
+    <tool lib="1" name="NOR Gate"/>
+    <sep/>
+    <tool lib="3" name="D Flip-Flop"/>
+    <tool lib="3" name="Register"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="main"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(200,120)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="WHEEL_IN_COUNTER"/>
+    </comp>
+    <comp lib="0" loc="(210,510)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="WHEEL_OUT_COUNTER"/>
+    </comp>
+    <comp lib="0" loc="(250,650)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="SECTION_COUNTER_CLEAR"/>
+    </comp>
+    <comp lib="0" loc="(260,750)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="ENGINEER_OFFSHOT_RESET"/>
+    </comp>
+    <comp lib="0" loc="(270,590)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="WHEEL_IN_HEALTH_COUNTER"/>
+    </comp>
+    <comp lib="0" loc="(290,610)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="WHEEL_OUT_HEALTH_COUNTER"/>
+    </comp>
+    <comp lib="1" loc="(270,520)" name="OR Gate">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="1" loc="(320,780)" name="NOT Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(360,570)" name="NOT Gate"/>
+    <comp lib="1" loc="(360,780)" name="NOT Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(410,590)" name="AND Gate">
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="1" loc="(420,290)" name="NOT Gate">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="1" loc="(440,240)" name="AND Gate">
+      <a name="facing" val="north"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="1" loc="(440,290)" name="NOT Gate">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="1" loc="(460,290)" name="NOT Gate">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="1" loc="(560,340)" name="OR Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(570,750)" name="NOT Gate"/>
+    <comp lib="1" loc="(660,740)" name="OR Gate"/>
+    <comp lib="1" loc="(710,760)" name="AND Gate"/>
+    <comp lib="1" loc="(780,790)" name="OR Gate"/>
+    <comp lib="1" loc="(830,720)" name="OR Gate">
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="2" loc="(540,750)" name="Comparator">
+      <a name="mode" val="unsigned"/>
+      <a name="width" val="3"/>
+    </comp>
+    <comp lib="3" loc="(220,40)" name="Counter">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="max" val="0x7"/>
+      <a name="width" val="3"/>
+    </comp>
+    <comp lib="3" loc="(570,40)" name="Counter">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="max" val="0x7"/>
+      <a name="width" val="3"/>
+    </comp>
+    <comp lib="4" loc="(270,790)" name="LED">
+      <a name="facing" val="north"/>
+      <a name="label" val="WHEEL_IN_LIMIT_OFF_SHOOT"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="4" loc="(300,820)" name="LED">
+      <a name="facing" val="north"/>
+      <a name="label" val="WHEEL_OUT_LIMIT_OFF_SHOOT"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="4" loc="(320,830)" name="LED">
+      <a name="facing" val="north"/>
+      <a name="label" val="WHEEL_IN_COUNTER_STATUS_LED"/>
+      <a name="offcolor" val="#00ff7c"/>
+    </comp>
+    <comp lib="4" loc="(360,800)" name="LED">
+      <a name="facing" val="north"/>
+      <a name="label" val="WHEEL_OUT_COUNTER_STATUS_LED"/>
+      <a name="offcolor" val="#00ff6b"/>
+    </comp>
+    <comp lib="4" loc="(830,720)" name="LED">
+      <a name="label" val="SECTION_BLOCK_OCCUPANCY_STATUS"/>
+    </comp>
+    <comp lib="4" loc="(840,550)" name="LED">
+      <a name="label" val="COUNTER_RESET_STATUS"/>
+    </comp>
+    <comp lib="5" loc="(1195,625)" name="Text">
+      <a name="color" val="#00ff17"/>
+      <a name="text" val="OPERATIONAL OUTPUTS"/>
+    </comp>
+    <comp lib="5" loc="(310,870)" name="Text">
+      <a name="color" val="#ff0000"/>
+      <a name="text" val="MAINTANANCE OUTPUTS"/>
+    </comp>
+    <comp lib="5" loc="(345,1030)" name="Text">
+      <a name="color" val="#ff3c00"/>
+      <a name="font" val="SansSerif bolditalic 16"/>
+      <a name="text" val="THIS AXLE COUNTER CAN COUNT AND COMPARE WHEEL SETS IN BOTH BIRECTIONS."/>
+    </comp>
+    <comp lib="5" loc="(435,945)" name="Text">
+      <a name="text" val="NOTE: STATUS LEDS WILL SHOW GREEN IF SENSOR IS HEALTHY ELSE RED. IT IS A MAINTAINANCE WARNER."/>
+    </comp>
+    <comp lib="5" loc="(490,975)" name="Text">
+      <a name="text" val="NOTE: WHEEL IN AND OUT COUNTER COUNTS THE NUMBER OF WHEELS ENTERING AND LEAVING A PARTICULAR SECTION."/>
+    </comp>
+    <comp lib="5" loc="(625,1000)" name="Text">
+      <a name="color" val="#ff3700"/>
+      <a name="font" val="SansSerif bolditalic 16"/>
+      <a name="text" val="IF THE VALUE OF TWO COUNTER IS SAME THEN ONLY THE SECTION BLOCK WILL BE FREE ELSE RED LED WILL BE ON STATING THE SECTION IS OCCUPIED. "/>
+    </comp>
+    <comp lib="5" loc="(690,900)" name="Text">
+      <a name="text" val="For better use use this design in real life 3 times per axle counter unit with different power and firewall with total distinct senors . And only clear if this satisfies 2oo3 category."/>
+    </comp>
+    <comp lib="5" loc="(90,330)" name="Text">
+      <a name="text" val="SENSOR INPUTS"/>
+    </comp>
+    <wire from="(10,570)" to="(10,630)"/>
+    <wire from="(10,570)" to="(250,570)"/>
+    <wire from="(10,630)" to="(250,630)"/>
+    <wire from="(200,120)" to="(220,120)"/>
+    <wire from="(210,510)" to="(550,510)"/>
+    <wire from="(220,30)" to="(220,60)"/>
+    <wire from="(220,30)" to="(440,30)"/>
+    <wire from="(250,630)" to="(250,650)"/>
+    <wire from="(260,680)" to="(260,750)"/>
+    <wire from="(260,680)" to="(300,680)"/>
+    <wire from="(270,520)" to="(300,520)"/>
+    <wire from="(270,590)" to="(320,590)"/>
+    <wire from="(270,630)" to="(270,790)"/>
+    <wire from="(270,630)" to="(530,630)"/>
+    <wire from="(290,570)" to="(290,580)"/>
+    <wire from="(290,580)" to="(300,580)"/>
+    <wire from="(290,610)" to="(360,610)"/>
+    <wire from="(300,520)" to="(300,570)"/>
+    <wire from="(300,570)" to="(320,570)"/>
+    <wire from="(300,580)" to="(300,680)"/>
+    <wire from="(300,690)" to="(300,820)"/>
+    <wire from="(300,690)" to="(590,690)"/>
+    <wire from="(320,550)" to="(320,570)"/>
+    <wire from="(320,550)" to="(840,550)"/>
+    <wire from="(320,570)" to="(330,570)"/>
+    <wire from="(320,590)" to="(320,750)"/>
+    <wire from="(320,590)" to="(360,590)"/>
+    <wire from="(320,780)" to="(320,830)"/>
+    <wire from="(320,830)" to="(670,830)"/>
+    <wire from="(360,610)" to="(360,750)"/>
+    <wire from="(360,780)" to="(360,790)"/>
+    <wire from="(360,790)" to="(360,800)"/>
+    <wire from="(360,790)" to="(730,790)"/>
+    <wire from="(400,150)" to="(400,740)"/>
+    <wire from="(400,150)" to="(410,150)"/>
+    <wire from="(400,740)" to="(500,740)"/>
+    <wire from="(400,90)" to="(540,90)"/>
+    <wire from="(410,590)" to="(420,590)"/>
+    <wire from="(420,320)" to="(420,590)"/>
+    <wire from="(440,30)" to="(440,60)"/>
+    <wire from="(440,320)" to="(440,360)"/>
+    <wire from="(440,360)" to="(830,360)"/>
+    <wire from="(440,60)" to="(440,240)"/>
+    <wire from="(440,60)" to="(570,60)"/>
+    <wire from="(460,320)" to="(460,650)"/>
+    <wire from="(460,650)" to="(720,650)"/>
+    <wire from="(490,680)" to="(490,760)"/>
+    <wire from="(490,680)" to="(770,680)"/>
+    <wire from="(490,760)" to="(500,760)"/>
+    <wire from="(530,290)" to="(530,630)"/>
+    <wire from="(530,290)" to="(540,290)"/>
+    <wire from="(540,740)" to="(580,740)"/>
+    <wire from="(540,760)" to="(610,760)"/>
+    <wire from="(540,90)" to="(540,290)"/>
+    <wire from="(550,120)" to="(550,510)"/>
+    <wire from="(550,120)" to="(570,120)"/>
+    <wire from="(560,340)" to="(560,630)"/>
+    <wire from="(560,630)" to="(730,630)"/>
+    <wire from="(570,750)" to="(570,780)"/>
+    <wire from="(570,780)" to="(660,780)"/>
+    <wire from="(580,290)" to="(590,290)"/>
+    <wire from="(580,720)" to="(580,740)"/>
+    <wire from="(580,720)" to="(610,720)"/>
+    <wire from="(590,290)" to="(590,690)"/>
+    <wire from="(590,290)" to="(760,290)"/>
+    <wire from="(670,810)" to="(670,830)"/>
+    <wire from="(670,810)" to="(730,810)"/>
+    <wire from="(710,760)" to="(720,760)"/>
+    <wire from="(720,650)" to="(720,700)"/>
+    <wire from="(720,700)" to="(720,760)"/>
+    <wire from="(720,700)" to="(780,700)"/>
+    <wire from="(730,630)" to="(730,720)"/>
+    <wire from="(730,720)" to="(780,720)"/>
+    <wire from="(730,770)" to="(730,790)"/>
+    <wire from="(750,150)" to="(770,150)"/>
+    <wire from="(750,90)" to="(760,90)"/>
+    <wire from="(760,90)" to="(760,290)"/>
+    <wire from="(770,150)" to="(770,680)"/>
+    <wire from="(780,740)" to="(780,790)"/>
+    <wire from="(830,360)" to="(830,720)"/>
+  </circuit>
+</project>

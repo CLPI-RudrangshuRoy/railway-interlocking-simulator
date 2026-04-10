@@ -1,0 +1,207 @@
+Basic Route Design Plan
+===================
+         1          2          3         4         5         6          7         8          9          10
+    ||I.D.                           || HOME                      || M.S.                         || Ad.S                                                                 P.O.V. (=>)
+=>=||=====||=====||=====||=====||=====||=====||=====||=====||=====||=====||=>=|          MAINLINE 1
+ B   | 500m | 500m | 500m  | 500m | 500m | 500m  | 500m | 500m | 500m  | 500m |  B
+      || Ad.S                          || M.S                                    || HOME                     || I.D                                                       P.O.V. (<=)
+                                        _      _______________      _
+                                          \\   |     PLATFORM     |   //
+                                           \\_|_______________|_//
+                                [||=====||=====||=====||=====||                                                        LOOPLINE 4-7A
+		                | 500m | 500m | 500m | 500m   | 
+		             SHUNT-L    1          2         3            
+                                           || L.S (P.O.V. <=)          || L.S (P.O.V =>)                                                                                           
+
+LEGENDS:-
+=========
+P.O.V (=>) = Point of View is from left to right.
+
+Signals involved (UP and DOWN both directions included for signals):-
+======================================================
+2 x I.D (1 and 10) = Inner Distant ( Yellow, Green , Yellow ) // Automated 1 aspect grade higher than HOME signal
+2 x HOME (4 and 8) = Home Signal ( Red, Yellow , Green , 5 LED PAIR FOR 1 ROUTE ) // USER CONTROLLED. SIDING / LOOP OPTION CAN BE PROVIDED IFF MAINLINE IS SET AT YELLOW ASPECT .
+2 x M.S. (4 and 7) = Mainline Starter ( Red, Yellow, Green, Yellow ) // User Controlled
+2 x L.S. (LN 4-7A (1 and 3)) = Loopline Starter ( Red ,Yellow ) // User controlled
+2 x Ad.S (1 and 10) = Advance Starter ( Red , Green ) // User Controlled
+
+Sections setting involved :-
+=====================
+1) ML_HSF_SETTING_STATUS (Station type)
+2) LL_HSF_SETTING_STATUS (Station type)
+3) ML_SSF_SETTING_STATUS (Station type)
+4) ML_Ad_S_SETTING_STATUS (Station type)
+
+
+Single crossovers settings involved :-
+=============================
+1) SC_HSF_SETTING_STATUS
+2) SC_SSF_SETTING_STATUS
+3) SC_LL_SETTING_STATUS
+
+Axle counter pins involved :- 
+==========================
+1) ML_HSF_SETTING_OCCUPIED_STATUS 
+2) LL_HSF_SETTING_OCCUPIED_STATUS 
+3) ML_SSF_SETTING_OCCUPIED_STATUS 
+4) ML_Ad_S_SETTING_OCCUPIED_STATUS 
+5) SC_HSF_SETTING_OCCUPIED_STATUS
+6) SC_SSF_SETTING_OCCUPIED_STATUS
+7) SC_LL_SETTING_OCCUPIED_STATUS
+8) OCCUPIED_STATUS
+
+(Axle counter voting logic is 3oo3)
+
+
+Station name : Station A
+Station type : B Class II standard (one way roadside)
+
+Warning (To be displayed with concerned section or crossover and same for all 3 interlocking systems):-
+1) Train Parting (T.P. ) : If RESET is tapped when IN and OUT tap counts are unequal.
+2) Wrong Direction Traffic Flow (W.D.T.F.) : If OUT count is first invoked before IN count.
+3) Section Passed At Danger (S.P.A.D.) : If a IN or OUT count is invoked for a section which is not set.  
+4) T.P.+W.D.T.F. : If RESET is tapped when IN and OUT tap counts are unequal + OUT count is first invoked before IN count.
+5) W.D.T.F.+S.P.A.D. : If OUT count is first invoked before IN count + If a IN or OUT count is invoked for a section which is not set. 
+6) T.P + S.P.A.D. : If RESET is tapped when IN and OUT tap counts are unequal + If a IN or OUT count is invoked for a section which is not set.
+7) T.P.+W.D.T.F.+S.P.A.D. : If RESET is tapped when IN and OUT tap counts are unequal + OUT count is first invoked before IN count + If a IN or OUT count is invoked for a section which is not set.
+
+(GUIs designed by Java.) 
+
+Station A home GUI:-
+=================
+Buttons for following :-
+==================
+1) P.I. GUI button to open P.I GUI
+2) R.R.I GUI button to open R.R.I GUI
+3) E.I. GUI button to open E.I GUI
+(But multiple modes can not be opened at the same time.
+
+For P.I. GUI:-
+=============
+Buttons for following :-
+==================
+Sections setting involved :- (1 setting : F for NOT SET , S for SET) 
+===================================================
+1) ML_HSF_SETTING_STATUS (Station type)
+2) LL_HSF_SETTING_STATUS (Station type)
+3) ML_SSF_SETTING_STATUS (Station type)
+4) ML_Ad_S_SETTING_STATUS (Station type)
+
+Single crossovers settings involved :- (2 settings : N for NORMAL or R for REVERSE and S for Set or F for Free.)
+======================================================================================
+1) SC_HSF_SETTING_STATUS
+2) SC_SSF_SETTING_STATUS
+3) SC_LL_SETTING_STATUS
+
+Axle counter pins involved :- (IN, OUT,RESET ; Display IN tap count and OUT tap count individually to record 
+number of wheels entering and leaving a section. And RESET is tapped to nullify both counts.)
+====================================================================================
+(Give user a following options : No axle counter consideration :1oo1,1oo2,1oo3,2oo2,2oo3 ,3oo3 voting logic.)
+1) ML_HSF_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+2) LL_HSF_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+3) ML_SSF_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+4) ML_Ad_S_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+5) SC_HSF_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+6) SC_SSF_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+7) SC_LL_SETTING_OCCUPIED_STATUS : SET , IN , OUT ,RESET
+8) OCCUPIED_STATUS : SET , IN , OUT ,RESET
+(Show IN counter tapping value and OUT counter tapping value as well)
+(SC=Single Crossover , ML = Mainline , LL = Loopline , HSF/SSF = Home/Starter Signal Facing , Ad_S = Advance Starter)
+
+BLOCK_A_signal_aspect_pins:-
+=========================
+1) BLOCK_A_1_BIT
+2) BLOCK_A_2_BIT
+
+Signal aspect buttons (By default all aspects should be at danger and 2D signal GUI with aspect colour visible along with buttons and 5 white bulbed feather should be above the main signals with indentation either left or right like a rising staircase with red should be at lowest height then one yellow then green then route feather as order):-
+====================================================
+1)HOME SIGNAL GUI buttons :-
+  ========================
+                              O   1
+                            O     2
+                          O       3
+                        O         4
+                      O           5  (1=>5 Route feather . When this is chosen YELLOW should also be activated)
+                      ^                     
+                     O            GREEN
+                     O            YELLOW
+                     O            RED
+2) MAINLINE STARTER GUI buttons :-
+   =============================
+                     O            GREEN
+                     O            YELLOW
+                     O            RED
+3) LOOPLINE STARTER GUI buttons :-
+   ==============================
+                     O            YELLOW
+                     O            RED
+(Note : Either (2) and (3) should be both RED else either of (2) and (3) should be RED if other is non RED . Both should not be non RED at the same time.)
+
+4) ADVANCE STARTER GUI buttons:-
+  =============================
+                     O            Green
+                     O            RED
+(Where O is the signal aspect and show the corresponding colour toggled else show dark black to represent it is turned off.)
+
+For RRI GUI:
+===========
+
+	1) Station not clear  (Home GUI should throw RED)
+	2) Station clear till main line starter (Home GUI should show YELLOW and mainline starter GUI should show RED , SC_HSF_SETTING_STATUS force to 0,ML_HSF_SETTING_STATUS force to 1.)
+	3) Station clear till loop line starter (Home GUI should show YELLOW + 5 WHITE LED BULBS  and loopline starter should show RED, SC_HSF_SETTING_STATUS force to 1, LL_HSF_SETTING_STATUS force to 1.)
+	4) Station clear after platform but before advance starter by mainline (HOME GUI should show YELLOW, mainline starter GUI should show YELLOW , but Advance Starter GUI should show RED,SC_HSF_SETTING_STATUS force to 0,ML_HSF_SETTING_STATUS force to 1, SC_SSF_SETTING_STATUS to 0 ,ML_Ad_S_SETTING_STATUS to 0.)
+	5) Station clear after platform but before advance starter by loopline (HOME GUI should show YELLOW + 5 WHITE LED BULBS , loopline starter GUI should show YELLOW , but Advance Starter GUI should show RED,SC_HSF_SETTING_STATUS force to 1, LL_HSF_SETTING_STATUS force to 1,SC_LL_SETTING_STATUS to 1,SC_SSF_SETTING_STATUS to 0 ,ML_Ad_S_SETTING_STATUS to 0.)
+	6) Station pass by mainline ((HOME GUI should show GREEN, mainline starter GUI should show GREEN , and Advance Starter GUI should show GREEN,SC_HSF_SETTING_STATUS force to 0,ML_HSF_SETTING_STATUS force to 1, SC_SSF_SETTING_STATUS to 0 ,ML_Ad_S_SETTING_STATUS to 1.) [This option is only possible if BLOCK_A_1_BIT and BLOCK_A_2_BIT are 01,10,11].
+	7) Station pass by loopline (HOME GUI should show YELLOW + 5 WHITE LED BULBS , loopline starter GUI should show YELLOW , and Advance Starter GUI should show GREEN,SC_HSF_SETTING_STATUS force to 1, LL_HSF_SETTING_STATUS force to 1,SC_LL_SETTING_STATUS to 1,SC_SSF_SETTING_STATUS to 0 ,ML_Ad_S_SETTING_STATUS to 0.)[This option is only possible if BLOCK_A_1_BIT and BLOCK_A_2_BIT are 01,10,11].
+Keep BLOCK_A_1_BIT and BLOCK_A_2_BIT as manual to toggleable buttons for now.
+	8) Station blocked advance starter only cleared (ADV STARTER force to GREEN and ML_Ad_S_SETTING_STATUS force to SET) [This option is only possible if BLOCK_A_1_BIT and BLOCK_A_2_BIT are 01,10,11].
+
+In EI setting following options should be given (FLANK PROTECTION, APPROACH LOCK enabled):-
+=============================================================================
+1) No route clearance
+HOME = RED
+MAIN STARTER = RED
+LOOP STARTER = RED
+ADV STARTER = RED
+2) Mainline route station pass
+HOME = YELLOW
+MAIN STARTER = GREEN
+ADV STARTER = GREEN
+LOOP STARTER = RED
+SC_HSF_SETTING_STATUS=0
+ML_HSF_SETTING_STATUS= SET
+SC_SSF_SETTING_STATUS=0
+ML_SSF_SETTING_STATUS=SET
+ML_Ad_S_SETTING_STATUS=SET
+3) Mainline route station stop
+HOME = YELLOW
+MAIN STARTER = RED
+ADV STARTER = RED
+LOOP STARTER = RED
+SC_HSF_SETTING_STATUS= 0
+ML_HSF_SETTING_STATUS= SET
+ML_SSF_SETTING_STATUS= NOT SET
+ML_Ad_S_SETTING_STATUS= NOT SET
+4) Loopline route station pass 
+HOME = YELLOW + ROUTE FEATHER (5 white led bulbs placed angular )
+LOOP STARTER = GREEN
+ADV STARTER = GREEN
+MAIN STARTER = RED
+SC_HSF_SETTING_STATUS=1
+LL_HSF_SETTING_STATUS= SET
+SC_LL_SETTING_STATUS=1
+SC_SSF_SETTING_STATUS=1
+ML_SSF_SETTING_STATUS=SET
+ML_Ad_S_SETTING_STATUS=SET
+5) Loopline route station stop
+HOME = YELLOW + ROUTE FEATHER (5 white led bulbs placed angular )
+LOOP STARTER = YELLOW
+ADV STARTER = RED
+MAIN STARTER = RED
+SC_HSF_SETTING_STATUS=1
+LL_HSF_SETTING_STATUS= SET
+ML_SSF_SETTING_STATUS= NOT SET
+ML_Ad_S_SETTING_STATUS= NOT SET
+6) Station to block section pass
+ADV STARTER = GREEN
+ML_Ad_S_SETTING_STATUS=SET
